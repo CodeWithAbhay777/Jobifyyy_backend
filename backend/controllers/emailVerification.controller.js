@@ -41,10 +41,6 @@ export const verifyEmailCode = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Email and code are required");
     }
 
-    if (!mongo.Types.ObjectId.isValid(id)) {
-        throw new ApiError(400, "Invalid User ID");
-    }
-
     // Retrieve from Redis
     const storedCode = await redis.get(`verificationCode:${email}`);
 
