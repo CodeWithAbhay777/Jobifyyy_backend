@@ -405,18 +405,18 @@ export const getAllCandidateInterviews = asyncHandler(async (req, res) => {
     .sort({ scheduledAt: -1 });
     
   
-  const formattedInterviews = interviews.map(interview => {
-    const interviewObj = interview.toObject();
-    interviewObj.scheduledAt = moment
-      .utc(interview.scheduledAt)
-      .local()
-      .format("YYYY-MM-DD HH:mm");
-    return interviewObj;
-  });
+  // const formattedInterviews = interviews.map(interview => {
+  //   const interviewObj = interview.toObject();
+  //   interviewObj.scheduledAt = moment
+  //     .utc(interview.scheduledAt)
+  //     .local()
+  //     .format("YYYY-MM-DD HH:mm");
+  //   return interviewObj;
+  // });
 
   return res
     .status(200)
-    .json(new ApiResponse(200, "Interviews fetched successfully", formattedInterviews));
+    .json(new ApiResponse(200, "Interviews fetched successfully", interviews));
 });
 
 
@@ -569,9 +569,13 @@ export const updateInterviewDetails = asyncHandler(async (req, res) => {
     throw new ApiError(400, "No interview details provided to update");
   }
 
+  console.log("Data to update:", dataToUpdate);
+
   const updatedInterview = await InterviewModel.findByIdAndUpdate(id, dataToUpdate, {
     new: true,
   });
+
+  console.log('updated data :::::' , updatedInterview);
 
   const [candidateInfo, interviewerInfo, jobInfo] = await Promise.all([
     UserModel.findById(interview.candidateSelected).select("username email"),
