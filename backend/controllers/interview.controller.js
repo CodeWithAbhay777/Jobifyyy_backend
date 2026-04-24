@@ -134,6 +134,7 @@ export const getAllInterviews = asyncHandler(async (req, res) => {
   const interviews = await InterviewModel.find()
     .skip(skip)
     .limit(limit)
+    .sort({ scheduledAt: -1 })
     .populate("candidateSelected", "username email")
     .populate("interviewerAssigned", "username email")
     .populate("job", "_id title department");
