@@ -1,0 +1,1 @@
+This is a file to maintain existance of uploads folder in in server.

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+
 import ApplicationModel from "../models/application.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
@@ -11,7 +11,7 @@ export const submitApplication = asyncHandler(async (req, res) => {
   const { jobId, coverLetter, useExistingResume, resumeUrl } = req.body;
   const userId = req.id;
 
-  if (!jobId || !mongoose.Types.ObjectId.isValid(jobId)) {
+  if (!jobId) {
     throw new ApiError(400, "Invalid Job ID");
   }
 

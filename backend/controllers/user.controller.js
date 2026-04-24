@@ -157,7 +157,7 @@ export const login = asyncHandler(async (req, res) => {
     .status(200)
     .cookie("jobify_access_token", requiredTokens.accessToken, accessCookieOptions)
     .cookie("jobify_refresh_token", requiredTokens.refreshToken, refreshCookieOptions)
-    .json(new ApiResponse(200, "Login successfully", finalSavedUser));
+    .json(new ApiResponse(200, "Login successfully", dataToSend));
 });
 
 export const logout = asyncHandler(async (req, res) => {
