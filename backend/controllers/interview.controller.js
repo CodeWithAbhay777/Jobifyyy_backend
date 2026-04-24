@@ -404,15 +404,6 @@ export const getAllCandidateInterviews = asyncHandler(async (req, res) => {
     .populate('job', 'title department')
     .sort({ scheduledAt: -1 });
     
-  
-  // const formattedInterviews = interviews.map(interview => {
-  //   const interviewObj = interview.toObject();
-  //   interviewObj.scheduledAt = moment
-  //     .utc(interview.scheduledAt)
-  //     .local()
-  //     .format("YYYY-MM-DD HH:mm");
-  //   return interviewObj;
-  // });
 
   return res
     .status(200)
