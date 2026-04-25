@@ -114,7 +114,7 @@ export const login = asyncHandler(async (req, res) => {
       ],
     });
   }
-  console.log(user);
+ 
 
   if (!user) {
     throw new ApiError(401, "Invalid credentials");

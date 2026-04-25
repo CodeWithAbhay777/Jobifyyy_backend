@@ -41,7 +41,7 @@ export const getRoomToken = asyncHandler(async (req, res) => {
     if (!application) {
         throw new ApiError(404, "Application not found for the interview");
     }
-    const expirationHours = 168; // 168 hours 
+    const expirationHours = 5; // 5 hours 
     const exp = Math.floor(Date.now() / 1000) + (expirationHours * 60 * 60);
     const token = sdk.generateUserToken({ user_id: userData._id, exp: exp });
 

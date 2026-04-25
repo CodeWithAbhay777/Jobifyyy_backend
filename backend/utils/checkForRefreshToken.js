@@ -25,6 +25,10 @@ export const checkForRefreshToken = async (refreshToken, req, res, next) => {
     if (!user) {
       throw new ApiError(401, "Unauthorized request : User not found");
     }
+
+    if (user.refreshToken !== refreshToken) {
+      throw new ApiError(401, "Unauthorized request : Refresh token mismatch");
+    }
   
     const requiredTokens = generateAccessAndRefereshTokens(user);
   

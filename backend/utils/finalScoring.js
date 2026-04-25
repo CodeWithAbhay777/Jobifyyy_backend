@@ -15,7 +15,7 @@ const calculateTotalScore = async(payload) => {
         let maxAIscore = 0;
 
         if (aiEvaluationData.length === 0) {
-            aiScorePercentage = null; // better than 0 (means "no AI data")
+            aiScorePercentage = null; // (means "no AI data")
         } else {
             for (let i = 0; i < aiEvaluationData.length; i++) {
                 const aiEval = aiEvaluationData[i];

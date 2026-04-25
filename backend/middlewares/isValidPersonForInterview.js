@@ -27,10 +27,9 @@ export const isValidPersonForInterview = asyncHandler(async(req, res, next) => {
         return res.status(404).json({message: "Interview not found"});
     }
 
-    // scheduledAt is already a Date object from MongoDB, no need to parse
     const scheduledTimeForInterview = new Date(interviewData.scheduledAt);
     const currentTime = new Date();
-    const endTime = addHours(scheduledTimeForInterview, 3360); // Assuming 3360-minute interview duration
+    const endTime = addHours(scheduledTimeForInterview, 300); // Assuming 300-minute interview duration
 
     if (!isAfter(currentTime, scheduledTimeForInterview))  {
         return res.status(403).json({ message: "Interview is not started yet" });
