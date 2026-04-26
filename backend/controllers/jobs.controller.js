@@ -72,7 +72,7 @@ export const getAllJobsByAdmin = asyncHandler(async (req, res) => {
     },
   ]);
 
-  if (!jobs?.length) {
+  if (!jobs) {
     throw new ApiError(404, "No jobs found");
   }
 
